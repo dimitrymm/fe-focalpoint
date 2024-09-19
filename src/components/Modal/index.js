@@ -1,4 +1,3 @@
-import Button from '../Button';
 import PropTypes, { func } from 'prop-types';
 import styles from './Modal.module.scss';
 import { useState } from 'react';
@@ -11,7 +10,6 @@ export default function Modal({ isDeleted, onClose, onSubmit, onClick }) {
     }
 
     function createTask() {
-        console.log('created', taskName);
         onSubmit(taskName);
         onClose();
     }

@@ -1,23 +1,25 @@
 'use client';
-import Image from 'next/image';
 import styles from './page.module.scss';
 
 import Header from '@/components/Header';
 import { useState } from 'react';
 import Modal from '@/components/Modal';
 import TaskList from '@/components/TasksList';
+import TasksList from '@/components/TasksList';
+import CompleteTasksList from '@/components/TasksList copy';
 
 export default function Main() {
+    const [completedTasks, setCompletedTasks] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+    const [selectedTaskId, setSelectedTaskId] = useState(null);
+
     const [tasks, setTasks] = useState([
         { id: 1, text: 'Lavar as mãos', isChecked: false },
         { id: 2, text: 'Fazer um Bolo', isChecked: false },
         { id: 3, text: 'Lavar a louça', isChecked: false },
         { id: 4, text: 'Levar o lixo para fora', isChecked: false },
     ]);
-    const [completedTasks, setCompletedTasks] = useState([]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-    const [selectedTaskId, setSelectedTaskId] = useState(null);
 
     function handleToggleTask(taskId) {
         const task = tasks.find((task) => task.id === taskId);
@@ -65,7 +67,6 @@ export default function Main() {
         setCompletedTasks(
             completedTasks.filter((task) => task.id !== selectedTaskId),
         );
-
         handleCloseDeleteModal();
     }
 
@@ -83,11 +84,15 @@ export default function Main() {
                 />
             )}
             <div className={styles.block}>
-                <TaskList
-                    completedTasks={completedTasks}
+                <TasksList
                     handleOpenDeleteModal={handleOpenDeleteModal}
                     handleToggleTask={handleToggleTask}
                     tasks={tasks}
+                />
+                <CompleteTasksList
+                    completedTasks={completedTasks}
+                    handleOpenDeleteModal={handleOpenDeleteModal}
+                    handleToggleTask={handleToggleRemoveTask}
                 />
 
                 <button onClick={handleOpenModal} className={styles.button}>

@@ -13,6 +13,7 @@ export default function ToDoItem({ onClick, task, onToggle, onRestore }) {
     function handleVerifyToDo() {
         setIsChecked(!isChecked);
         task.isChecked = !isChecked;
+
         if (onToggle) {
             onToggle(task.id);
         } else if (onRestore) {

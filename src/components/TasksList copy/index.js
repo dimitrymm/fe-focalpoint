@@ -1,17 +1,16 @@
 import ToDoItem from '../ToDoItem';
-import styles from './TasksList.module.scss';
+import styles from './CompleteTasksList.module.scss';
 
-export default function TasksList({
-    tasks,
-
+export default function CompleteTasksList({
+    completedTasks,
     handleOpenDeleteModal,
     handleToggleTask,
 }) {
     return (
         <main className={styles.main}>
-            <h1>Suas Tarefas de Hoje</h1>
             <div>
-                {tasks.map((task) => (
+                <h1>Tarefas Finalizadas</h1>
+                {completedTasks.map((task) => (
                     <ToDoItem
                         key={task.id}
                         task={task}
