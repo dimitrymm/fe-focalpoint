@@ -5,17 +5,24 @@ import styles from './ToDoItem.module.scss';
 import { useState } from 'react';
 import chbase from '@/assets/icons/chbase.png';
 import check from '@/assets/icons/check.png';
+import Modal from '../Modal';
 
-export default function ToDoItem({ onClick }) {
-    const [isChecked, setIsChecked] = useState(false);
+export default function ToDoItem({ onClick, task, onToggle, onRestore }) {
+    const [isChecked, setIsChecked] = useState(task.isChecked);
 
-    function handleCheckToDo() {
+    function handleVerifyToDo() {
         setIsChecked(!isChecked);
+        task.isChecked = !isChecked;
+        if (onToggle) {
+            onToggle(task.id);
+        } else if (onRestore) {
+            onRestore(task.id);
+        }
     }
 
     return (
         <div className={styles.toList}>
-            <label className={styles.itemToDo} onClick={handleCheckToDo}>
+            <label className={styles.itemToDo} onClick={handleVerifyToDo}>
                 <Image
                     src={isChecked ? check : chbase}
                     alt="checkbox"
@@ -23,11 +30,11 @@ export default function ToDoItem({ onClick }) {
                 />
 
                 <span className={isChecked ? styles.checked : ''}>
-                    Lavar as mãos
+                    {task.text}
                 </span>
             </label>
             <Image
-                onClick={onClick}
+                onClick={() => onClick(task.id)}
                 className={styles.imageTrash}
                 src={trash}
                 alt="trash"
