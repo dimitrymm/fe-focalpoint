@@ -1,5 +1,4 @@
 .button {
-    margin-top: 24px;
     padding: 16px 0;
     border: none;
     border-radius: 8px;
@@ -13,5 +12,13 @@
     }
     &:active {
         background: linear-gradient(to right, #375292, #567fca);
+    }
+    &.danger {
+        background-color: #ff0000;
+        color: #ffffff;
+    }
+    &.cancel {
+        background-color: #ffffff;
+        color: #000000;
     }
 }
