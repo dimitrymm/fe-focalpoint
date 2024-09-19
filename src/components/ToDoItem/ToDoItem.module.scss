@@ -1,0 +1,32 @@
+.toList {
+    margin: 0 32px 0 32px;
+    padding: 16px;
+    display: flex;
+
+    .itemToDo {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .checked {
+        text-decoration: line-through;
+    }
+
+    .checkbox {
+        width: 24px;
+        height: 24px;
+        margin-right: 16px;
+    }
+
+    .imageTrash {
+        width: 24px;
+        height: 24px;
+        margin-left: auto;
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.2);
+        }
+    }
+}
