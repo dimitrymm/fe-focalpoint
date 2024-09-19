@@ -1,6 +1,6 @@
 # 📝 To-Do List Website
 
-Bem-vindo ao **To-Do List Website**! 🚀 Um projeto simples e prático para gerenciar suas tarefas do dia a dia. Crie, marque e organize suas tarefas de maneira fácil e eficiente! 😎
+Bem-vindo ao **To-Do List Website**! 🚀 Um projeto simples e prático para gerenciar suas tarefas do dia a dia. Crie, marque e organize suas tarefas.
 
 ## 💡 Funcionalidades
 
