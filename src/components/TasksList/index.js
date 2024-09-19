@@ -1,5 +1,5 @@
 import ToDoItem from '../ToDoItem';
-import styles from './ItemList.module.scss';
+import styles from './TasksList.module.scss';
 
 export default function ItemList({
     tasks,

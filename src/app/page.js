@@ -1,17 +1,13 @@
 'use client';
 import Image from 'next/image';
 import styles from './page.module.scss';
-import logo from '../assets/images/logo.png';
-import trash from '../assets/icons/trash.png';
-import Button from '@/components/Button';
-import ToDoItem from '@/components/ToDoItem';
+
 import Header from '@/components/Header';
 import { useState } from 'react';
 import Modal from '@/components/Modal';
-import { func } from 'prop-types';
-import ItemList from '@/components/ItemList';
+import TaskList from '@/components/TasksList';
 
-export default function Home() {
+export default function Main() {
     const [tasks, setTasks] = useState([
         { id: 1, text: 'Lavar as mãos', isChecked: false },
         { id: 2, text: 'Fazer um Bolo', isChecked: false },
@@ -52,7 +48,6 @@ export default function Home() {
     function handleCloseDeleteModal() {
         setIsDeleteModalOpen(false);
     }
-
     function handleAddTask(taskName) {
         if (!taskName) {
             alert('Digite uma Tarefa!');
@@ -65,7 +60,6 @@ export default function Home() {
             setTasks([...tasks, task]);
         }
     }
-
     function handleRemoveTask() {
         setTasks(tasks.filter((task) => task.id !== selectedTaskId));
         setCompletedTasks(
@@ -89,7 +83,7 @@ export default function Home() {
                 />
             )}
             <div className={styles.block}>
-                <ItemList
+                <TaskList
                     completedTasks={completedTasks}
                     handleOpenDeleteModal={handleOpenDeleteModal}
                     handleToggleTask={handleToggleTask}
@@ -102,30 +96,4 @@ export default function Home() {
             </div>
         </>
     );
-}
-{
-    /* <main className={styles.main}>
-<h1>Suas Tarefas de Hoje</h1>
-<div>
-    {tasks.map((task) => (
-        <ToDoItem
-            key={task.id}
-            task={task}
-            onClick={handleOpenDeleteModal}
-            onToggle={handleToggleTask}
-        />
-    ))}
-</div>
-
-<div>
-    <h1>Tarefas Finalizadas</h1>
-    {completedTasks.map((task) => (
-        <ToDoItem
-            key={task.id}
-            task={task}
-            onClick={handleOpenDeleteModal}
-        />
-    ))}
-</div>
-</main> */
 }
